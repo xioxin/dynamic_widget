@@ -80,6 +80,7 @@ class DynamicWidgetBuilder {
 
   static Widget buildFromMap(Map<String, dynamic> map,
       BuildContext buildContext, ClickListener listener) {
+    if(map == null) return null;
     String widgetName = map['type'];
 
     for (var parser in _parsers) {

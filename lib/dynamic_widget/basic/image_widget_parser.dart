@@ -19,9 +19,9 @@ class AssetImageWidgetParser extends WidgetParser {
     bool excludeFromSemantics = map.containsKey('excludeFromSemantics')
         ? map['excludeFromSemantics']
         : false;
-    double scale = map.containsKey("scale") ? map['scale'] : null;
-    double width = map.containsKey('width') ? map['width'] : null;
-    double height = map.containsKey('height') ? map['height'] : null;
+    double scale = map.containsKey("scale") ? toDouble(map['scale']) : null;
+    double width = map.containsKey('width') ? toDouble(map['width']) : null;
+    double height = map.containsKey('height') ? toDouble(map['height']) : null;
     Color color = map.containsKey('color') ? parseHexColor(map['color']) : null;
     BlendMode blendMode =
         map.containsKey('blendMode') ? parseBlendMode(map['blendMode']) : null;

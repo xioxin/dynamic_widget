@@ -120,16 +120,21 @@ FontWeight parseFontWeight(String textFontWeight) {
   return fontWeight;
 }
 
-Color parseHexColor(String hexColorString) {
+Color parseHexColor(dynamic hexColorString) {
   if (hexColorString == null) {
     return null;
   }
-  hexColorString = hexColorString.toUpperCase().replaceAll("#", "");
-  if (hexColorString.length == 6) {
-    hexColorString = "FF" + hexColorString;
+  if(hexColorString is int) {
+    return Color(hexColorString);
   }
-  int colorInt = int.parse(hexColorString, radix: 16);
-  return Color(colorInt);
+  if(hexColorString is String) {
+    hexColorString = hexColorString.toUpperCase().replaceAll("#", "");
+    if (hexColorString.length == 6) {
+      hexColorString = "FF" + hexColorString;
+    }
+    int colorInt = int.parse(hexColorString, radix: 16);
+    return Color(colorInt);
+  }
 }
 
 TextStyle parseTextStyle(Map<String, dynamic> map) {
@@ -576,4 +581,12 @@ Clip parseClipBehavior(String clipBehaviorString) {
       return Clip.antiAliasWithSaveLayer;
   }
   return Clip.antiAlias;
+}
+
+
+double toDouble(val) {
+  if(val == null) return null;
+  if(val is double) return val;
+  if(val is int) return val.toDouble();
+  if(val is String) return double.tryParse(val);
 }

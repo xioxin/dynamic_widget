@@ -30,8 +30,8 @@ class ContainerWidgetParser extends WidgetParser {
       padding: padding,
       color: color,
       margin: margin,
-      width: map['width'],
-      height: map['height'],
+      width: toDouble(map['width']),
+      height: toDouble(map['height']),
       constraints: constraints,
       child: child,
     );
